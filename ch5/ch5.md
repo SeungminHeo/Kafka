@@ -7,41 +7,42 @@
 - 카프카 컨슈머의 종류는 두가지
     - 올드 컨슈머 : 컨슈머의 오프셋을 주키퍼의 지노드에 저장 (will be deprecated)
     - 뉴 컨슈머 : 컨슈머의 오프셋을 카프카의 토픽에 저장
-- 주요 옵션
+
 * [Kafka Consumer Configuration](https://kafka.apache.org/documentation/#consumerconfigs)
 * [Kafka-Python Consumer Configuration](https://kafka-python.readthedocs.io/en/latest/apidoc/KafkaConsumer.html)
 * [PyKafka (Simple) Consumer Configuration](https://pykafka.readthedocs.io/en/2.3.0/api/simpleconsumer.html)
-    - bootstrap.servers
-        - 카프카 프로듀서와 동일, 카프카 클러스터 호스트들을 지정 
-    - fetch.min.bytes 
-        - 한번에 가져올 수 있는 최소 데이터 사이즈. 지정한 사이즈 보다 작으면 요청에 응답하지 않고 누적되어 조건에 만족할때 까지 기다림.
-    - group.id
-        - 컨슈머의 그룹에 대한 식별자, 그룹 아이디는 매우 중요한 옵션.
-    - enable.auto.commit 
-        - 주기적으로 오프셋 정보를 커밋.(백그라운드)
-    - auto.offset.reset 
-        - 카프카에서 초기 오프셋이 없거나, 현재 오프셋이 더 이상 존재하지 않는 경우 리셋을 지정
-            - earliest : 가장 초기 오프셋값
-            - latest : 가장 마지막(최근)의 오프셋값
-            - none : catch error
-    - fetch.max.bytes
-        - 한번에 가져올 수 있는 최대 데이터 사이즈
-    - request.timeout.ms   
-        - 요청을 기다리는 최대 응답시간
-    - session.timeout.ms
-        - 컨슈머와 브로커 사이의 세션 타임아웃 시간. 브로커가 컨슈머의 하트비트를 기다리는 최대 시간.
-        - 만약 이 시간이 지나면 컨슈머 그룹이 rebalance를 시도함.
-        - 일반적으로 heartbeat.interval.ms 옵션과 같이 설정됨. 
-        - 너무 짧으면 장애 감지는 잘되지만, 원치 않는 리밸런싱이 이렁남. 
-    - heartbeat.interval.ms 
-        - KafkaConsumer poll() 메소드로 하트비트를 보내는 시간을 조절하는 옵션
-        - session.timeout.ms 보다 작아야함.(일반적으로 1/3)
-    - max.poll.records 
-        - poll() 단일 호출에 대한 레코드 수 조정. 폴링 루프에서 데이터 양을 조절
-    - max.poll.interval.ms 
-        - 하트비트를 보내도 메시지를 가져가지 않는 방식의 점유를 막는 옵션. 주기적으로 poll() 호출이 없으면 장애로 판단하고 다른 컨슈머에게 배정
-    - fetch.max.wait.ms     
-        - fetch.max.bytes 에 설정된 데이터보다 적은 경우 요청에 응답을 ㅣㄱ다리는 최대 시간. 
+
+- bootstrap.servers
+    - 카프카 프로듀서와 동일, 카프카 클러스터 호스트들을 지정 
+- fetch.min.bytes 
+    - 한번에 가져올 수 있는 최소 데이터 사이즈. 지정한 사이즈 보다 작으면 요청에 응답하지 않고 누적되어 조건에 만족할때 까지 기다림.
+- group.id
+    - 컨슈머의 그룹에 대한 식별자, 그룹 아이디는 매우 중요한 옵션.
+- enable.auto.commit 
+    - 주기적으로 오프셋 정보를 커밋.(백그라운드)
+- auto.offset.reset 
+    - 카프카에서 초기 오프셋이 없거나, 현재 오프셋이 더 이상 존재하지 않는 경우 리셋을 지정
+        - earliest : 가장 초기 오프셋값
+        - latest : 가장 마지막(최근)의 오프셋값
+        - none : catch error
+- fetch.max.bytes
+    - 한번에 가져올 수 있는 최대 데이터 사이즈
+- request.timeout.ms   
+    - 요청을 기다리는 최대 응답시간
+- session.timeout.ms
+    - 컨슈머와 브로커 사이의 세션 타임아웃 시간. 브로커가 컨슈머의 하트비트를 기다리는 최대 시간.
+    - 만약 이 시간이 지나면 컨슈머 그룹이 rebalance를 시도함.
+    - 일반적으로 heartbeat.interval.ms 옵션과 같이 설정됨. 
+    - 너무 짧으면 장애 감지는 잘되지만, 원치 않는 리밸런싱이 이렁남. 
+- heartbeat.interval.ms 
+    - KafkaConsumer poll() 메소드로 하트비트를 보내는 시간을 조절하는 옵션
+    - session.timeout.ms 보다 작아야함.(일반적으로 1/3)
+- max.poll.records 
+    - poll() 단일 호출에 대한 레코드 수 조정. 폴링 루프에서 데이터 양을 조절
+- max.poll.interval.ms 
+    - 하트비트를 보내도 메시지를 가져가지 않는 방식의 점유를 막는 옵션. 주기적으로 poll() 호출이 없으면 장애로 판단하고 다른 컨슈머에게 배정
+- fetch.max.wait.ms     
+    - fetch.max.bytes 에 설정된 데이터보다 적은 경우 요청에 응답을 기다리는 최대 시간. 
 
 콘솔 컨슈머로 메시지 가져오기
 ---
