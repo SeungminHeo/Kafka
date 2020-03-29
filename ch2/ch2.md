@@ -8,25 +8,25 @@
 - 주키퍼는 서버를 앙상블로 구성하고 각각의 애플리케이션들이 클라이언트가 되어 서버와 연결함. 이 상태정보는 znode에 저장됨
 
 ### ZooKeeper 설치
-```
+```shell script
 sudo apt-get update
 sudo apt-get install openjdk-8-jdk
 wget https://downloads.apache.org/zookeeper/zookeeper-3.6.0/apache-zookeeper-3.6.0.tar.gz
 tar zxf apache-zookeeper-3.6.0.tar.gz
 ```
 - symbolic link
-```
+```shell script
 ln -s apache-zookeeper-3.6.0 zookeeper
 ls -la zookeeper
 ```
 - myid
-``` 
+``` shell script
 mkdir data
 echo 1 > /data/myid 환경설정
 vi /usr/local/zookeeper/conf/zoo.cfg
 ```
 - zoo.cfg
-```
+```shell script
 trickTime=2000
 initLimit=10
 syncLimit=5
@@ -39,42 +39,42 @@ server.4=z4:2888:3888
 server.5=z5:2888:3888
 ```
 - Zookeeper 실행/종료
-```
+```shell script
 /usr/local/bin/zkServer.sh start
 /usr/local/bin/zkServer.sh stop
 ```
 
 ### kafka 설치
-```
+```shell script
 sudo apt-get update
 sudo apt-get install openjdk-8-jdk
 wget http://apache.mirror.cdnetworks.com/kafka/2.4.1/kafka_2.13-2.4.1.tgz
 tar -xvzf kafka_2.13-2.4.1.tgz
 ```
 - symbolic link
-```
+```shell script
 ln -s kafka_2.13-2.4.1 kafka
 ls -la kafka
 ```
 
 - 데이터 경로 및 broker.id
-```
+```shell script
 sudo mkdir -p /data1 
 sudo mkdir -p /data2
 ```
 - 환경설정
-```
+```shell script
 sudo vim /usr/local/kafka/config/server.properties
 ```
 - 아래내용수정
-```
+```shell script
 broker.id=1
 log.dirs=/data1,/data2
 zookeeper.connect=z1:2181,z2:2181,z3:2181,z4:2181,z5:2181/kafka
 ```
 
 - 아래내용추가(eng팀 ref.)
-```
+```shell script
 delete.topic.enable=true
 listeners=PLAINTEXT://:9092
 advertised.listeners=PLAINTEXT://k1:9092
