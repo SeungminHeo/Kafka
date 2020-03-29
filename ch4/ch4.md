@@ -48,6 +48,7 @@ producer.send('producer-test', 'Apache Kafka is a distributed streaming platform
 카프카 프로듀서 주요 옵션
 ---
 * [Reference: Kafka Producer Configuration Documentation](https://kafka.apache.org/documentation/#producerconfigs)
+* [Reference: Kafka-Python Producer Configuration Documentation](https://kafka-python.readthedocs.io/en/latest/apidoc/KafkaProducer.html)
 * [Reference: PyKafka Producer Documentation](https://pykafka.readthedocs.io/en/latest/api/producer.html)
 - bootstrap.servers 
     - 카프카 클러스터의 경우 마스터 노드와 같은 개념이 없기 때문에 모든 서버가 요청을 받을 수 있다. 
