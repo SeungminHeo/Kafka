@@ -8,9 +8,9 @@
     - 올드 컨슈머 : 컨슈머의 오프셋을 주키퍼의 지노드에 저장 (will be deprecated)
     - 뉴 컨슈머 : 컨슈머의 오프셋을 카프카의 토픽에 저장
 - 주요 옵션
-*[Kafka Consumer Configuration](https://kafka.apache.org/documentation/#consumerconfigs)
-*[Kafka-Python Consumer Configuration](https://kafka-python.readthedocs.io/en/latest/apidoc/KafkaConsumer.html)
-*[PyKafka (Simple) Consumer Configuration](https://pykafka.readthedocs.io/en/2.3.0/api/simpleconsumer.html)
+* [Kafka Consumer Configuration](https://kafka.apache.org/documentation/#consumerconfigs)
+* [Kafka-Python Consumer Configuration](https://kafka-python.readthedocs.io/en/latest/apidoc/KafkaConsumer.html)
+* [PyKafka (Simple) Consumer Configuration](https://pykafka.readthedocs.io/en/2.3.0/api/simpleconsumer.html)
     - bootstrap.servers
         - 카프카 프로듀서와 동일, 카프카 클러스터 호스트들을 지정 
     - fetch.min.bytes 
