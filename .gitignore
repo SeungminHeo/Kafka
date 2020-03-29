@@ -5,7 +5,7 @@ __pycache__/
 # CSV
 *.csv
 
-# PyCharm 
+# PyCharm
 .idea
 
 # C extensions
@@ -13,6 +13,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+venv/
 env/
 build/
 develop-eggs/
@@ -46,33 +47,11 @@ htmlcov/
 nosetests.xml
 coverage.xml
 
-# Translations
-*.mo
-*.pot
-
-# Django stuff:
-*.log
-
-# Sphinx documentation
-docs/_build/
-
 # PyBuilder
 target/
 
 # IPython notebook
 .ipynb_checkpoints
 
-# Repo scratch directory
-scratch/
-
 # Misc
 .DS_Store
-
-# Analyzing Report
-*.html
-.html
-
-# nbconvert template file
-.tpl
-*.tpl
-
